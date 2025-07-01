@@ -43,14 +43,14 @@ const data = [
 const Products = () => {
   return (
     <div className="container mx-auto my-8">
-      <h1 className="text-5xl font-semibold mb-2 text-center text-blue-700 mb-9">
+      <h1 className="text-5xl font-semibold  text-center text-blue-700 mb-9">
         Our Best Salers
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
         {data.map((item) => (
           <div
             key={item.id}
-            className="bg-white shadow-md rounded-md overflow-hidden hover:shadow-lg transition-transform transform hover:scale-105"
+            className="bg-cyan-300 shadow-md rounded-md overflow-hidden hover:shadow-lg transition-transform transform hover:scale-105"
           >
             <img
               src={item.img}

@@ -51,87 +51,95 @@ const CaloriesCalculator = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 px-4">
-      <h1 className="text-2xl font-semibold mb-4">Calories Calculator</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="mb-4">
-            <label className="block mb-2">Weight (kg):</label>
-            <input required
-              type="number"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              className="border rounded-md px-2 py-1 w-full"
-            />
+    <div className="container mx-auto  px-4 text-white min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      <div className="w-full max-w-2xl bg-gradient-to-r from-gray-800 via-gray-900 to-black p-8 rounded-lg shadow-2xl border border-gray-700">
+        <h1 className="text-4xl font-semibold mb-8 text-center text-blue-300 drop-shadow">Calories Calculator</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="mb-4">
+              <label className="block mb-2 text-gray-200">Weight (kg):</label>
+              <input
+                required
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                className="bg-gray-900 border border-gray-700 rounded-md px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                placeholder="Enter weight"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2 text-gray-200">Height (cm):</label>
+              <input
+                required
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+                className="bg-gray-900 border border-gray-700 rounded-md px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                placeholder="Enter height"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2 text-gray-200">Age:</label>
+              <input
+                required
+                type="number"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                className="bg-gray-900 border border-gray-700 rounded-md px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                placeholder="Enter age"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2 text-gray-200">Gender:</label>
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                className="bg-gray-900 border border-gray-700 rounded-md px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2 text-gray-200">Activity Level:</label>
+              <select
+                value={activityLevel}
+                onChange={(e) => setActivityLevel(e.target.value)}
+                className="bg-gray-900 border border-gray-700 rounded-md px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              >
+                <option value="sedentary">Sedentary</option>
+                <option value="lightly_active">Lightly Active</option>
+                <option value="moderately_active">Moderately Active</option>
+                <option value="very_active">Very Active</option>
+                <option value="extra_active">Extra Active</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2 text-gray-200">Goal:</label>
+              <select
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
+                className="bg-gray-900 border border-gray-700 rounded-md px-3 py-2 w-full text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              >
+                <option value="weight_loss">Weight Loss</option>
+                <option value="weight_gain">Weight Gain</option>
+              </select>
+            </div>
           </div>
-          <div className="mb-4">
-            <label className="block mb-2">Height (cm):</label>
-            <input required
-              type="number"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              className="border rounded-md px-2 py-1 w-full"
-            />
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors mt-6 w-full font-semibold shadow"
+          >
+            Calculate
+          </button>
+        </form>
+        {caloriesResult && (
+          <div className="mt-10 bg-gray-800 rounded-lg p-6 border border-gray-700 text-center">
+            <h2 className="text-xl font-semibold text-blue-300">Calories Intake:</h2>
+            <p className="mt-2 text-lg text-gray-200">Daily Calories Needed: <span className="font-bold text-blue-400">{caloriesResult}</span></p>
           </div>
-          <div className="mb-4">
-            <label className="block mb-2">Age:</label>
-            <input required
-              type="number"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              className="border rounded-md px-2 py-1 w-full"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2">Gender:</label>
-            <select
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              className="border rounded-md px-2 py-1 w-full"
-            >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2">Activity Level:</label>
-            <select
-              value={activityLevel}
-              onChange={(e) => setActivityLevel(e.target.value)}
-              className="border rounded-md px-2 py-1 w-full"
-            >
-              <option value="sedentary">Sedentary</option>
-              <option value="lightly_active">Lightly Active</option>
-              <option value="moderately_active">Moderately Active</option>
-              <option value="very_active">Very Active</option>
-              <option value="extra_active">Extra Active</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <label className="block mb-2">Goal:</label>
-            <select
-              value={goal}
-              onChange={(e) => setGoal(e.target.value)}
-              className="border rounded-md px-2 py-1 w-full"
-            >
-              <option value="weight_loss">Weight Loss</option>
-              <option value="weight_gain">Weight Gain</option>
-            </select>
-          </div>
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors mt-4"
-        >
-          Calculate
-        </button>
-      </form>
-      {caloriesResult && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold">Calories Intake:</h2>
-          <p className="mt-2">Daily Calories Needed: {caloriesResult}</p>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
